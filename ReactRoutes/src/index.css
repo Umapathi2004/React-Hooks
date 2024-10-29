@@ -60,3 +60,12 @@ h1:hover{
   background-color: #ffff;
   color: #0e1111;
 }
+.count{
+  padding: 0px 15px;
+}
+button{
+  all:unset;
+  padding: 6px;
+  font-size: .5em;
+  cursor: pointer;
+}

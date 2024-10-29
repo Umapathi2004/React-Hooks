@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { createContext, Fragment, useState } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from './Navbar'
 import Home from './Pages/Home'
@@ -7,10 +7,15 @@ import About from './Pages/About'
 import Page1 from './Pages/Page1'
 import Page2 from './Pages/Page2'
 import None from './Pages/None'
+
+export const CountProp = createContext();
+
 const App = () => {
+  const [count,setCount] = useState(0)
   return (
     <Fragment>
     <BrowserRouter> 
+    <CountProp.Provider value={{count,setCount}}>
     <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
@@ -20,6 +25,7 @@ const App = () => {
         <Route path='/page2' element={<Page2/>}/>
         <Route path='*' element={<None/>}/>
       </Routes>
+      </CountProp.Provider>
     </BrowserRouter>
     </Fragment>
   )
