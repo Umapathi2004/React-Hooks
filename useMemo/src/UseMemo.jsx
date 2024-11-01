@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useMemo, useEffect } from 'react';
+import React, { Fragment, useState, useMemo, useCallback } from 'react';
 
 const UseMemo = () => {
   const [dark, setDark] = useState(false);
@@ -10,11 +10,12 @@ const UseMemo = () => {
   };
 
   // Memoize the result of numResult
-  const result = useMemo(() => {
+  const result =useMemo(() => {
     console.log("Usememo")
     return numResult(num)
 }, [num]);
 // const result = numResult(num)
+console.log(result)
   return (
     <Fragment>
       <input
@@ -22,7 +23,7 @@ const UseMemo = () => {
         value={num}
         onChange={(e) => setNum(Number(e.target.value))}
       />
-      <div className="result" style={style}>{result}</div>
+      <div className="result" style={style}>{result+"1"}</div>
       <button onClick={() => setDark((prev) => !prev)}>Toggle Theme</button>
     </Fragment>
   );
