@@ -19,14 +19,14 @@ const AddUsers = ({updated}) => {
    (user.id && user.name && user.age && user)?
       dispatch(UpdateUser(user.id,user.name,user.age,user.place)):"";
     setUser({"name":"","age":"","place":""});
-    
+   
   }
   return (
     <div className="container">
         <input type="text" onChange={(e)=>SetUser(e)} autoComplete='off' value={user.name} name="name" placeholder='Name....'/>
-        <input type="text" onChange={(e)=>SetUser(e)} autoComplete='off' value={user.age} name="age" placeholder='Age....'/>
+        <input type='text' onChange={(e)=>SetUser(e)} autoComplete='off' value={user.age} name="age" placeholder='Age....'/>
         <input type="text" onChange={(e)=>SetUser(e)} autoComplete='off' value={user.place} name="place" placeholder='Place....'/>
-        <button onClick={Add}>Submit</button>
+        <button onClick={Add} disabled={!(user.name && user.age && user.place)}>Submit</button>
     </div>
   )
 }

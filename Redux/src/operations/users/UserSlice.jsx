@@ -5,14 +5,22 @@ const initialState =[
         id:1,
         name:"Umapathi",
         age:21,
-        place:"Gummidipoondi"
+        place:"Gummidipoondi",
+        reaction:{
+            like:0,
+            dislike:0
+        },
     },
     {
         id:2,
         name:"Solomon",
         age:23,
-        place:"Ponneri"
-    }
+        place:"Ponneri",
+        reaction:{
+            like:0,
+            dislike:0
+        },
+    },
 ];
 
 export const userSlice = createSlice({
@@ -29,14 +37,19 @@ export const userSlice = createSlice({
                         id:nanoid(),
                         name,
                         age,
-                        place
+                        place,
+                        reaction:{
+                            like:0,
+                            dislike:0
+                        },
                     }
                 }
             }
         },
         UpdateUser:{
             reducer:(state,action)=>{
-                return state.map(user=>user.id==action.payload.id?action.payload:user)
+                const {id,name,age,place} = action.payload
+                return state.map(user=>user.id==id?{...user,name,age,place}:user)
             },
             prepare:(id,name,age,place)=>{
                 return{
@@ -51,8 +64,25 @@ export const userSlice = createSlice({
         },
         Delete:(state,actiopn)=>{
             return state.filter(user=>user.id !== actiopn.payload)
+        },
+        Reaction:{
+            reducer:(state,action)=>{
+                const {id,reaction} = action.payload;
+                const user = state.find((user)=>user.id==id);
+                if(user){
+                    user.reaction[reaction]++
+                }
+        },
+        prepare:(id,reaction)=>{
+            return{
+                payload:{
+                    id,
+                    reaction
+                }
+        }   
         }
     }
+    }
 })
-export const {AddUser,Delete,UpdateUser} = userSlice.actions;
+export const {AddUser,Delete,UpdateUser,Reaction} = userSlice.actions;
 export default userSlice.reducer;

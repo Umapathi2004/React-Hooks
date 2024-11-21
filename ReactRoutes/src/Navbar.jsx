@@ -1,16 +1,16 @@
 import React, { useContext } from 'react'
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {CountProp} from './App'
 const Navbar = () => {
-  const {count,setCount} = useContext(CountProp);
+  const {count} = useContext(CountProp);
   return (
     <nav>
-        <div className="homes"><Link to={"/"}>Home</Link></div>
+        <div className="homes"><Link index to={"/"}>Home</Link></div>
         <div className="others">
-            <div className="contect"><Link to={"/contect"}>Contect</Link></div>
-            <div className="abouts"><Link to={"/about"}>About</Link></div>
-            <div className="page1s"><Link to={"/page1"}>Page1</Link></div>
-            <div className="page2s"><Link to={"/page2"}>Page2</Link></div>
+            <NavLink to={"/contect"}>Contect</NavLink>
+            <NavLink to={"/about"}>About</NavLink>
+            <NavLink to={"/page1"}>Page1</NavLink>
+            <NavLink to={"/page2"}>Page2</NavLink>
             <div className="count">{count}</div>
         </div>
     </nav>

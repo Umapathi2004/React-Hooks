@@ -26,13 +26,14 @@ nav{
 }
 nav .others{
   display: flex;
-  gap: 20px;
+  align-items: center;
 }
 a{
-  padding: 15px;
+  padding: 15px 25px;
   cursor: pointer;
   text-decoration: none;
   color: #ffff;
+  height: 100%;
 }
 a:hover{
   background-color: #ffff;
@@ -60,7 +61,12 @@ h1:hover{
   background-color: #ffff;
   color: #0e1111;
 }
+.active{
+  background-color: #ffff;
+  color: #0e1111;
+}
 .count{
+  height: 100%;
   padding: 0px 15px;
 }
 button{

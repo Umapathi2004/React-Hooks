@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux'
-import { Delete } from '../operations/users/UserSlice';
+import { Delete,Reaction } from '../operations/users/UserSlice';
 import AddUsers from './AddUsers';
 const Users = () => {
   
@@ -18,6 +18,10 @@ const Users = () => {
                 <h4>{`${user.age} - ${user.place}`}</h4>
                 <div><button onClick={()=>dispatch(Delete(user.id))}>Delete</button>
                 <button onClick={()=>setUpdated(user)}>Update</button></div>
+                <div className='reaction'>
+                  <button name='like' onClick={(e)=>dispatch(Reaction(user.id,e.target.name))}>L {user.reaction.like}</button>
+                  <button name='dislike' onClick={(e)=>dispatch(Reaction(user.id,e.target.name))}>D {user.reaction.dislike}</button>
+                </div>
             </div>
         ))}
       </div>
