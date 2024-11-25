@@ -45,7 +45,11 @@
   gap: 20px;
   list-style: none;
  }
- nav ul > li:hover{
+ nav ul a{
+    color: #262525;
+    text-decoration: none;
+ }
+ nav ul > a:hover{
   color: #c57afe;
   cursor: pointer;
  }
@@ -53,9 +57,10 @@
   width: 100%;
   height: 80%;
   display: flex;
+  flex-direction: column;
+  gap:10px;
   align-items: center;
   justify-content: center;
-  font-size: 2em;
   font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
