@@ -10,7 +10,7 @@ import Info from './Pages/UsersPages/Info'
 import UserLaout from './Layout/UserLaout'
 import Users from './Pages/RootPages/Users'
 
-const App = () => {
+const App = () => {``
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout/>}>
